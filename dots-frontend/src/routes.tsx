@@ -1,21 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Dashboard from './pages/Dashboard/Dashboard';
 import FieldsList from './pages/Fields/FieldsList';
 import FieldDetail from './pages/Fields/FieldDetail';
 import Settings from './pages/Settings/Settings';
 
-const Routes = () => {
+const AppRoutes = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Dashboard} />
-        <Route path="/fields" exact component={FieldsList} />
-        <Route path="/fields/:id" component={FieldDetail} />
-        <Route path="/settings" component={Settings} />
-      </Switch>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/fields" element={<FieldsList />} />
+      <Route path="/fields/:id" element={<FieldDetail />} />
+      <Route path="/settings" element={<Settings />} />
+    </Routes>
   );
 };
 
-export default Routes;
+export default AppRoutes;

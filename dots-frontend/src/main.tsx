@@ -7,6 +7,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import theme from './theme/theme';
 import App from './App';
 import 'leaflet/dist/leaflet.css';
+import { startSimulator } from './api/simulator';
 
 // React Query client with sensible defaults
 const queryClient = new QueryClient({
@@ -21,6 +22,12 @@ const queryClient = new QueryClient({
 
 const rootEl = document.getElementById('root');
 if (!rootEl) throw new Error('Root element with id "root" not found');
+
+// Start the simulator for real-time data (only in development)
+// In production, this will be replaced by real API calls
+if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+  startSimulator(5000);
+}
 
 ReactDOM.createRoot(rootEl).render(
   <React.StrictMode>
